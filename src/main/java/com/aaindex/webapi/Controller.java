@@ -26,6 +26,7 @@ public class Controller {
     public String getUsers (@RequestParam(value="page", defaultValue="1", required = false) int page,
             @RequestParam(value="limit", defaultValue="50") int limit,
             @RequestParam(value="sort", defaultValue="dest", required = false) String sort ) {
+
         return "get users was called page ="+page +" limit="+limit +" sort="+sort;
     }
 
@@ -68,5 +69,13 @@ public class Controller {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("MyResponseHeader", "MyValue");
         return new ResponseEntity<String>(body, responseHeaders, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/bad-fix")
+    public ResponseEntity<String> badput (@RequestBody String body) {
+        log.info("input:{}", body);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("MyResponseHeader", "MyValue");
+        return new ResponseEntity<String>("body", responseHeaders, HttpStatus.CREATED);
     }
 }
