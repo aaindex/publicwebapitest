@@ -84,7 +84,7 @@ public class Controller {
         log.info("input:{}", body);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("MyResponseHeader", "MyValue");
-        return new ResponseEntity<String>(Encode.forHtmlContent(body), responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<String>(Encode.forCDATA(body), responseHeaders, HttpStatus.CREATED);
     }
 
     @PutMapping("/bad2")
@@ -93,8 +93,8 @@ public class Controller {
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("MyResponseHeader", "MyValue");
         
-        return ResponseEntity<String>(body, responseHeaders, HttpStatus.OK);
-        //return new ResponseEntity<String>(body, responseHeaders, HttpStatus.CREATED);
+        //return ResponseEntity<>(body, responseHeaders, HttpStatus.OK);
+        return new ResponseEntity<String>(body, responseHeaders, HttpStatus.CREATED);
     }
 
 }
