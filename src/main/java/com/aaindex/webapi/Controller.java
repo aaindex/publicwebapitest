@@ -63,7 +63,7 @@ public class Controller {
         return new ResponseEntity<String>("Hello World", responseHeaders, HttpStatus.CREATED);
     }
 
-    @PutMapping("/bad")
+    @PutMapping("/bad1")
     public ResponseEntity<String> badput (@RequestBody String body) {
         log.info("input:{}", body);
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -71,11 +71,22 @@ public class Controller {
         return new ResponseEntity<String>(body, responseHeaders, HttpStatus.CREATED);
     }
 
-    @PutMapping("/bad-fix")
+    @PutMapping("/bad1-fix")
     public ResponseEntity<String> badput (@RequestBody String body) {
         log.info("input:{}", body);
         HttpHeaders responseHeaders = new HttpHeaders();
         responseHeaders.set("MyResponseHeader", "MyValue");
         return new ResponseEntity<String>("body", responseHeaders, HttpStatus.CREATED);
     }
+
+    @PutMapping("/bad2")
+    public ResponseEntity<String> badput (@RequestBody String body) {
+        log.info("input:{}", body);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("MyResponseHeader", "MyValue");
+        
+        return ResponseEntity.ok(body);
+        //return new ResponseEntity<String>(body, responseHeaders, HttpStatus.CREATED);
+    }
+
 }
