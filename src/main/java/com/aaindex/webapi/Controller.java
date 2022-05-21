@@ -36,11 +36,26 @@ public class Controller {
         log.info("After Encoding forJava:{}", Encode.forJava(userId));
 
         UserRest ust = new UserRest();
-        ust.setEmail("aaindex@gmail.com");
+        ust.setEmail("testemail@gmail.com");
         ust.setFirstName("FirstName");
         ust.setLastName("LastName");
         ust.setUserId(userId);
         return ust;
     } 
 
+
+    @PostMapping(value = "/adduser", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> CreateUser (
+        @PathVariable String username)
+    {
+        return ResponseEntity.ok("New Useer!"); 
+    }
+
+    @PutMapping("/v2/queue")
+    public ResponseEntity<String> putToQueue (@RequestBody String body) {
+        log.info("input:{}", body);
+
+        return ResponseEntity.ok("<<<<<<<<<<<<<"+body+">>>>>>>>>>>>");
+       
+    }
 }
