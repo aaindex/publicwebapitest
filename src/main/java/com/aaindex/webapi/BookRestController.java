@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookRestController {
     
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Book getBook(@PathVariable int id) {
+    public Book getBook(@PathVariable String id) {
         return findBookById(id);
     }
 
-    private Book findBookById(int id) {
+    private Book findBookById(String id) {
         Book book = new Book();
-        book.setId("B-01");
+        book.setId(id);
         book.setAuthor("Will Smith");
         book.setIsbn("ISBN-00000000000000000001");
         book.setTitle("Who is Will Smith");

@@ -15,6 +15,8 @@ import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
+@RequestMapping("users-test")
 public class Controller {
 
     private static final Logger log = LoggerFactory.getLogger(Controller.class);
